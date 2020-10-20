@@ -13,10 +13,12 @@ app.get(/(.)*xyz$/, (req, res) => {
     res.send("That's all I wrote.")
 });
 
-app.get(/^capital-letters[^/\]?\/(*?)/, (req, res) => {
+app.get(/capital-letters[A-Za-z0-9]?.?(.*)/, (req, res) => {
+    let after = req.path.split("capital-letters/")[1]
 
+    res.send(after.toUpperCase())
 });
-
+// /^capital-letters[^\/]?\/(*?)/
 app.all('*', (req,res)=> {
     let rand = Math.floor(Math.random()*100)
     res.render('template1',{method:req.method, path:req.path, randomNumber:rand})
