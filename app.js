@@ -9,6 +9,9 @@ app.get('/',(req,res) => {
     res.send('Hello from Express!');
 })
 
+app.get(/(.)*xyz$/, (req, res) => {
+    res.send("That's all I wrote.")
+});
 
 app.all('*', (req,res)=> {
     let rand = Math.floor(Math.random()*100)
